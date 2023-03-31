@@ -11,7 +11,6 @@ class GetPopularMovies(private val movieRepository: MovieRepository) {
             try {
                 emit(Resource.loading())
                 val data = movieRepository.getPopularMovies(apiKey)
-                delay(5000L)
                 emit(Resource.success(data.body()?.results))
             } catch (e: Exception) {
                 emit(Resource.error(e.message.toString()))
